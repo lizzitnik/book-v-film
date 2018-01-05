@@ -66,7 +66,7 @@ div img {
   bottom: 100%;
   left: 0;
   right: 0;
-  background-color: #008CBA;
+  background-color: #e5eecc;
   overflow: hidden;
   width: 100%;
   height:0;
@@ -112,7 +112,7 @@ div img {
 
 .info-button:hover{
   padding-right: 24px;
-  padding-left:8px;
+  padding-left: 8px;
 }
 
 .info-button:hover:after {
@@ -120,7 +120,8 @@ div img {
   right: 20px;
 }
 
-.info-container, {
+
+.info-container {
   padding: 5px;
   text-align: center;
   border: solid 1px #c3c3c3;

@@ -1,27 +1,26 @@
-function getDataFromApi(searchTerm, callback) {
+function getDataFromApi(url, searchTerm, callback) {
   
   $.getJSON({
-  	url:'/books',
+  	url: url,
   	data: {
   		title: searchTerm
   	},
-  	success: function(res) {
-  		console.log(res);
-  	}
+  	success: callback
   });
 }
 
 function renderCover(result) {
-  return `
-  <img alt='book cover' src='${result.book[0].image_url[0]}'>
+  const bookImage = `
+  <img alt='book cover' src='${result.GoodreadsResponse.book[0].image_url[0]}'>
   `;
+  const filmImage = `
+  <img alt='film poster' src='${result.poster_path}'>
+  `;
+
+  $('.book-cover').html(bookImage);
+  $('.film-cover').html(filmImage);
 }
 
-function displayCover(cover) {
-  const results = cover.items.map((item, index) => renderCover(item));
-  $('.book-cover').html(results);
-  console.log(results);
-}
 
 function watchSubmit() {
   $('.search-form').submit(function(event) {
@@ -46,9 +45,9 @@ function getMoreInfo() {
 }
 
 function renderApp() {
-  renderCover();
-  displayCover();
-  getMoreInfo();
+  getDataFromApi('the shining', renderCover)
+  getDataFromApi('the shining', renderCover)
+  //getMoreInfo();
 }
 
 $(renderApp);

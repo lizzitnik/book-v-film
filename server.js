@@ -24,23 +24,20 @@ app.get('/books', (req, res) => {
 	});
 });
 
-app.get('/films', (req, res) => {
-	const url = "https://www.api.themoviedb.org/3/search/movie";
-	const params = {
-		query: req.query.title,
-		api_key: 'afe0b72190981877003354a0870166b9'
-	};
+app.get("/films", (req, res) => {
+  const url =
+    "http://api.themoviedb.org/3/search/movie?api_key=b2db0b846ffa15ef4db7bf36989625c1&query=" +
+    req.query.title
+  axios({
+    method: "get",
+    responseType: "json",
+    url: url
+  })
 
-	axios({ 
-		method: "get", 
-		data: params,
-		responseType: "json", 
-		url: url 
-	})
-	.then(apiRes => { 
-		 res.send(JSON.stringify(result));  
-	});
-});
+  .then(apiRes => {
+    res.send(JSON.stringify(apiRes))
+  })
+})
 
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));

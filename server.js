@@ -21,6 +21,9 @@ app.get('/books', (req, res) => {
 		let result = parseString(apiRes.data, (err, result) => {
 		 res.send(JSON.stringify(result)); 
 		}); 
+	})
+	.catch(response => {
+		console.log('not found');
 	});
 });
 
@@ -37,6 +40,9 @@ app.get("/films", (req, res) => {
   .then(apiRes => {
     res.send(apiRes.data.results[0])
   })
+  .catch(response => {
+		console.log('not found');
+	});
 })
 
 

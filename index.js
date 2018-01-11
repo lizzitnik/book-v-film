@@ -1,11 +1,19 @@
 function getDataFromApi(url, searchTerm, callback) {
-  
+  if (!searchTerm) {
+    return
+  };  
+
+
   $.getJSON({
   	url: url,
   	data: {
   		title: searchTerm
   	},
-  	success: callback
+  	success: callback, 
+    error: function() {
+      alert(`${searchTerm} is not a thing!`);
+
+    }
   });
 }
 
@@ -52,8 +60,8 @@ function renderBookFacts(result) {
   const bookFacts = `
     <div class='facts'>
       <span>Title: <b>${result.GoodreadsResponse.book[0].title[0]}</b></span><br><br>
-      <span>Author: <b>${result.GoodreadsResponse.book[0].author[0].name[0]}</b></span><br><br>
-      <span>Year Published: <b>${result.GoodreadsResponse.book[0].original_publication_year[0]}<b></span>
+      <span>Author: <b>${result.GoodreadsResponse.book[0].authors[0].author[0].name[0]}</b></span><br><br>
+      <span>Year Published: <b>${result.GoodreadsResponse.book[0].publication_year[0]}<b></span>
     </div>
   `;
 
@@ -71,6 +79,18 @@ function renderFilmFacts(result) {
   $('.film-facts').html(filmFacts);
 } 
 
+function renderBook(result) {
+  renderCover(result);
+  renderBookInfo(result);
+  renderBookFacts(results);
+}
+
+function renderFilm(results) {
+  renderPoster(results);
+  renderFilmInfo(results);
+  renderFilmFacts(results);
+}
+
 function watchSubmit() {
   $('.search-form').submit(function(event) {
     event.preventDefault();
@@ -79,13 +99,8 @@ function watchSubmit() {
 
     queryTarget.val("");
 
-    getDataFromApi('/books', query, renderCover);
-    getDataFromApi('/books', query, renderBookInfo);
-    getDataFromApi('/books', query, renderBookFacts);
-
-    getDataFromApi('/films', query, renderPoster);
-    getDataFromApi('/films', query, renderFilmInfo);
-    getDataFromApi('/films', query, renderFilmFacts);
+    getDataFromApi('/books', query, renderBook);
+    getDataFromApi('/films', query, renderFilm);
   });
 }
 

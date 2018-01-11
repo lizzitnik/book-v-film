@@ -7,7 +7,7 @@ app.get('/books', (req, res) => {
 	var parseString = require("xml2js").parseString ;
 	const url = "https://www.goodreads.com/book/title.xml";
 	const params = {
-		query: req.query.title,
+		title: req.query.title,
 		key: 'l6jtaoe1eJZYhsc7jYckEw'
 	};
 
@@ -35,7 +35,7 @@ app.get("/films", (req, res) => {
   })
 
   .then(apiRes => {
-    res.send(JSON.stringify(apiRes))
+    res.send(apiRes.data.results[0])
   })
 })
 

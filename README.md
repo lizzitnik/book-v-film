@@ -13,10 +13,10 @@ Main Page:
 
 ## Technology
 Built with:
-  -HTML
-  -CSS
-  -JavaScript
-  -jQuery
-  -Node.js
-  -Express
-  -Axios
+* HTML
+* CSS
+* JavaScript
+* jQuery
+* Node.js
+* Express
+* Axios

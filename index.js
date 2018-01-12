@@ -3,7 +3,6 @@ function getDataFromApi(url, searchTerm, callback) {
     return
   };  
 
-
   $.getJSON({
   	url: url,
   	data: {
@@ -11,8 +10,7 @@ function getDataFromApi(url, searchTerm, callback) {
   	},
   	success: callback, 
     error: function() {
-      alert(`${searchTerm} is not a thing!`);
-
+      alert(`${searchTerm} is not a title!`);
     }
   });
 }
@@ -79,13 +77,13 @@ function renderFilmFacts(result) {
   $('.film-facts').html(filmFacts);
 } 
 
-function renderBook(result) {
+function handleBook(result) {
   renderCover(result);
   renderBookInfo(result);
   renderBookFacts(result);
 }
 
-function renderFilm(result) {
+function handleFilm(result) {
   renderPoster(result);
   renderFilmInfo(result);
   renderFilmFacts(result);
@@ -97,13 +95,15 @@ function watchSubmit() {
     const queryTarget = $(event.currentTarget).find('.user-input');
     const query = queryTarget.val();
 
+    //empties the search bar
     queryTarget.val("");
 
-    getDataFromApi('/books', query, renderBook);
-    getDataFromApi('/films', query, renderFilm);
+    getDataFromApi('/books', query, handleBook);
+    getDataFromApi('/films', query, handleFilm);
   });
 }
 
+//handles the 'More Info' drop down menu
 function getMoreInfo() {
   $('.book-button').on('click', function() {
     $('.book-info').slideToggle('slow');
@@ -118,9 +118,6 @@ function getMoreInfo() {
 function renderApp() {
   watchSubmit();
   getMoreInfo();
-  
 }
 
 $(renderApp);
-
-

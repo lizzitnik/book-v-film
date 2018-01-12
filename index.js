@@ -59,9 +59,9 @@ function renderFilmInfo(result) {
 function renderBookFacts(result) {
   const bookFacts = `
     <div class='facts'>
-      <span>Title: <b>${result.GoodreadsResponse.book[0].title[0]}</b></span><br><br>
-      <span>Author: <b>${result.GoodreadsResponse.book[0].authors[0].author[0].name[0]}</b></span><br><br>
-      <span>Year Published: <b>${result.GoodreadsResponse.book[0].publication_year[0]}<b></span>
+      <span>Title: <br><b>${result.GoodreadsResponse.book[0].title[0]}</b></span><br><br>
+      <span>Author: <br><b>${result.GoodreadsResponse.book[0].authors[0].author[0].name[0]}</b></span><br><br>
+      <span>Year Published: <br><b>${result.GoodreadsResponse.book[0].publication_year[0]}<b></span>
     </div>
   `;
 
@@ -82,13 +82,13 @@ function renderFilmFacts(result) {
 function renderBook(result) {
   renderCover(result);
   renderBookInfo(result);
-  renderBookFacts(results);
+  renderBookFacts(result);
 }
 
-function renderFilm(results) {
-  renderPoster(results);
-  renderFilmInfo(results);
-  renderFilmFacts(results);
+function renderFilm(result) {
+  renderPoster(result);
+  renderFilmInfo(result);
+  renderFilmFacts(result);
 }
 
 function watchSubmit() {

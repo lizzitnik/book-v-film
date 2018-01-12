@@ -10,3 +10,13 @@ As an avid book and movie watcher, I wanted there to be a simple way to compare 
 Main Page:
 
 ![screen shot 2018-01-11 at 5 46 44 pm](https://user-images.githubusercontent.com/32852757/34858240-ff93570e-f703-11e7-88b9-061356c69c03.png)
+
+## Technology
+Built with:
+  HTML
+  CSS
+  JavaScript
+  jQuery
+  Node.js
+  Express
+  Axios

@@ -157,6 +157,7 @@ div img {
 .info-container {
   padding: 5px;
   border: solid 1px #c3c3c3;
+  overflow: auto;
 }
 
 .info-container {

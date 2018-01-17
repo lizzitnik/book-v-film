@@ -4,11 +4,11 @@ function getDataFromApi(url, searchTerm, callback) {
   };  
 
   $.getJSON({
-  	url: url,
-  	data: {
-  		title: searchTerm
-  	},
-  	success: callback, 
+    url: url,
+    data: {
+      title: searchTerm
+    },
+    success: callback, 
     error: function() {
       alert(`${searchTerm} is not a title!`);
     }
@@ -16,7 +16,7 @@ function getDataFromApi(url, searchTerm, callback) {
 }
 
 function renderCover(result) {
-  const bookImage = result.GoodreadsResponse.book[0].image_url[0];
+  const bookImage = result.image_url[0];
 
   $('.book-cover-image').attr('src', bookImage);
 }
@@ -30,11 +30,11 @@ function renderPoster(result) {
 
 function renderBookInfo(result) {
   const bookSynopsis = `
-    <span>Synopsis will be availible with the next update. Sorry for the incovienience :(</span>
+    <span>${result.description[0]}</span>
   `;
 
   const bookReview = `
-    <span>${result.GoodreadsResponse.book[0].average_rating[0]} / 5</span>
+    <span>${result.average_rating[0]} / 5</span>
   `;
 
   $('.book-synopsis').html(bookSynopsis);
@@ -57,9 +57,9 @@ function renderFilmInfo(result) {
 function renderBookFacts(result) {
   const bookFacts = `
     <div class='facts'>
-      <span>Title: <br><b>${result.GoodreadsResponse.book[0].title[0]}</b></span><br><br>
-      <span>Author: <br><b>${result.GoodreadsResponse.book[0].authors[0].author[0].name[0]}</b></span><br><br>
-      <span>Year Published: <br><b>${result.GoodreadsResponse.book[0].publication_year[0]}<b></span>
+      <span>Title: <br><b>${result.title[0]}</b></span><br><br>
+      <span>Author: <br><b>${result.authors[0].author[0].name[0]}</b></span><br><br>
+      <span>Year Published: <br><b>${result.publication_year[0]}<b></span>
     </div>
   `;
 

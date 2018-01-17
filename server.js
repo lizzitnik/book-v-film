@@ -19,7 +19,7 @@ app.get('/books', (req, res) => {
 	})
 	.then(apiRes => { 
 		let result = parseString(apiRes.data, (err, result) => {
-		 res.send(JSON.stringify(result)); 
+		 res.send(JSON.stringify(result.GoodreadsResponse.book[0])); 
 		}); 
 	})
 	.catch(response => {

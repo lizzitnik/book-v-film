@@ -87,8 +87,8 @@ h2 {
 
 div img {
   display: block;
-  width: 100%;
-  height: auto;
+  height: 300px;
+  margin: 0 auto;
 }
 
 .overlay {
@@ -107,10 +107,6 @@ div img {
 .cover:hover .overlay {
   bottom: 0;
   height: 100%;
-}
-
-.book-synopsis {
-  color: red;
 }
   
 .info-form {
@@ -139,7 +135,7 @@ div img {
 }
 
 .info-button:after {
-  content:'v' ;
+  content:'▼' ;
   position: absolute;
   opacity: 0;  
   top: 10px;
@@ -170,7 +166,9 @@ div img {
   height: 400px;
   padding: 50px;
   display: none;
-  background-color: white;
+  background-color: #8C1B19;
+  font-family: copperplate;
+  color: white;
 }
 
 
